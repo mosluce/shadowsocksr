@@ -76,3 +76,6 @@ mujson -l -u user
 ## 其他研究中問題
 
 - [ ] 多用戶 + Mysql = 多服務器架構
+
+## 參考資料來源
+[科學上網](https://doub.io/ss-jc57/)
