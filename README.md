@@ -3,7 +3,7 @@ ShadowsocksR
 
 [原說明詳見](https://github.com/shadowsocksr-backup/shadowsocksr)
 
-## 運作環境
+## 運作環境
 
 - 安裝 Docker 
 
@@ -15,9 +15,9 @@ curl -sSL get.docker.com | sh -
 
 > 選擇其中一種方法即可
 
-1. 使用 Docker Hub
+1. 使用 Docker Hub
 ```shell
-# 6440-6450 port mapping 範圍自行決定
+# 6440-6450 port mapping 範圍自行決定
 docker run -d --restart=always \
   -p 6440-6450:6440-6450 \
   --name ssr \
@@ -55,4 +55,4 @@ mujson -h
 
 ## 其他研究中問題
 
-- [ ] 多用戶 + Mysql = 多服務器架構
+- [ ] 多用戶 + Mysql = 多服務器架構
