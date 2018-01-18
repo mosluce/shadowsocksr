@@ -21,7 +21,7 @@ curl -sSL get.docker.com | sh -
 docker run -d --restart=always \
   -p 6440-6450:6440-6450 \
   --name ssr \
-  mosluce/5hadows0cksr-mudbjson
+  mosluce/5hadows0cksr-mujson
 ```
 2. Build 自己的 image
 ```shell
