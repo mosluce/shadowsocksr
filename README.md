@@ -53,6 +53,26 @@ alias mujson="docker exec -it ssr python mujson_mgr.py"
 mujson -h
 ```
 
+## 範例
+
+```shell
+# 新增使用者 (必要欄位...帳號/密碼/Port)
+mujson -a -u user -k password -p 6440
+
+# 編輯使用者 (注意!Port不能改)
+mujson -e -u user -k password2
+
+# 顯示使用者資料 (全部)
+mujson -l
+
+# 顯示使用者資料 (特定)
+mujson -l -u user
+```
+
+## 關於Client端
+
+[請參考此連結](https://github.com/shadowsocksr-backup/shadowsocks-rss)
+
 ## 其他研究中問題
 
 - [ ] 多用戶 + Mysql = 多服務器架構
