@@ -1,105 +1,58 @@
 ShadowsocksR
 ===========
 
-[![Build Status]][Travis CI]
+[原說明詳見](https://github.com/shadowsocksr-backup/shadowsocksr)
 
-A fast tunnel proxy that helps you bypass firewalls.
+## 運作環境
 
-Server
-------
+- 安裝 Docker 
 
-### Install
+```shell
+curl -sSL get.docker.com | sh -
+```
 
-Debian / Ubuntu:
+## 啟動服務 
 
-    apt-get install git
-    git clone https://github.com/shadowsocksr/shadowsocksr.git
+> 選擇其中一種方法即可
 
-CentOS:
+1. 使用 Docker Hub
+```shell
+# 6440-6450 port mapping 範圍自行決定
+docker run -d --restart=always \
+  -p 6440-6450:6440-6450 \
+  --name ssr \
+  mosluce/5hadows0cksr-mudbjson
+```
+2. Build 自己的 image
+```shell
+git clone -b mujson https://github.com/mosluce/shadowsocksr
 
-    yum install git
-    git clone https://github.com/shadowsocksr/shadowsocksr.git
+cd shadowsocksr
 
-Windows:
+docker build -t [your/image:tag] .
 
-    git clone https://github.com/shadowsocksr/shadowsocksr.git
+docker run -d --restart=always \
+  -p 6440-6450:6440-6450 \
+  --name ssr \
+  [your/image:tag]
+```
 
-### Usage for single user on linux platform
+## 管理使用者
 
-If you clone it into "~/shadowsocksr"  
-move to "~/shadowsocksr", then run:
+```shell
+# 說明非常詳細相信你會看 XD
+docker exec -it ssr python mujson_mgr.py -h
+```
 
-    bash initcfg.sh
+## 簡短指令
 
-move to "~/shadowsocksr/shadowsocks", then run:
+```shell
+alias mujson="docker exec -it ssr python mujson_mgr.py"
 
-    python server.py -p 443 -k password -m aes-128-cfb -O auth_aes128_md5 -o tls1.2_ticket_auth_compatible
+# 取得說明
+mujson -h
+```
 
-Check all the options via `-h`.
+## 其他研究中問題
 
-You can also use a configuration file instead (recommend), move to "~/shadowsocksr" and edit the file "user-config.json", then move to "~/shadowsocksr/shadowsocks" again, just run:
-
-    python server.py
-
-To run in the background:
-
-    ./logrun.sh
-
-To stop:
-
-    ./stop.sh
-
-To monitor the log:
-
-    ./tail.sh
-
-
-Client
-------
-
-* [Windows] / [macOS]
-* [Android] / [iOS]
-* [OpenWRT]
-
-Use GUI clients on your local PC/phones. Check the README of your client
-for more information.
-
-Documentation
--------------
-
-You can find all the documentation in the [Wiki].
-
-License
--------
-
-Copyright 2015 clowwindy
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may
-not use this file except in compliance with the License. You may obtain
-a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
-WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
-License for the specific language governing permissions and limitations
-under the License.
-
-Bugs and Issues
-----------------
-
-* [Issue Tracker]
-
-
-
-[Android]:           https://github.com/shadowsocksr/shadowsocksr-android
-[Build Status]:      https://travis-ci.org/shadowsocksr/shadowsocksr.svg?branch=manyuser
-[Debian sid]:        https://packages.debian.org/unstable/python/shadowsocks
-[iOS]:               https://github.com/shadowsocks/shadowsocks-iOS/wiki/Help
-[Issue Tracker]:     https://github.com/shadowsocksr/shadowsocksr/issues?state=open
-[OpenWRT]:           https://github.com/shadowsocks/openwrt-shadowsocks
-[macOS]:             https://github.com/shadowsocksr/ShadowsocksX-NG
-[Travis CI]:         https://travis-ci.org/shadowsocksr/shadowsocksr
-[Windows]:           https://github.com/shadowsocksr/shadowsocksr-csharp
-[Wiki]:              https://github.com/breakwa11/shadowsocks-rss/wiki
+- [ ] 多用戶 + Mysql = 多服務器架構
