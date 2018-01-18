@@ -1,4 +1,4 @@
-ShadowsocksR
+5hadows0cksR
 ===========
 
 [原說明詳見](https://github.com/shadowsocksr-backup/shadowsocksr)
